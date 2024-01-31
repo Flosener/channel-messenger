@@ -20,9 +20,9 @@ app.app_context().push()  # create an app context before initializing db
 HUB_URL = 'http://localhost:5555'
 HUB_AUTHKEY = '1234567890'
 CHANNEL_AUTHKEY = '22334455'
-CHANNEL_NAME = "The Lousy Channel"
+CHANNEL_NAME = "Bot Channel"
 CHANNEL_ENDPOINT = "http://localhost:5002"
-CHANNEL_FILE = 'messages.json'
+CHANNEL_FILE = 'messages2.json'
 
 @app.cli.command('register')
 def register_command():

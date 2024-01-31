@@ -2,17 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>List of channels</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatApp</title>
+    <link rel="stylesheet" href="static/style.css">
 </head>
+
 <body>
-
-<h1>List of message channels</h1>
-
-<ul>
-    {% for channel in channels %}
-        <li><a href="/show?channel={{ channel.endpoint | urlencode }}">{{ channel.name }}</a></li>
-    {% endfor %}
-</ul>
-
+    <h1>GameChat</h1>
+    <ul>
+        {% for channel in channels %}
+            <li><a href="/show?channel={{ channel.endpoint | urlencode }}">{{ channel.name }}</a></li>
+        {% endfor %}
+    </ul>
 </body>
+
 </html>
