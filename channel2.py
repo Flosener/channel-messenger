@@ -20,7 +20,7 @@ app.app_context().push()  # create an app context before initializing db
 HUB_URL = 'http://localhost:5555'
 HUB_AUTHKEY = '1234567890'
 CHANNEL_AUTHKEY = '22334455'
-CHANNEL_NAME = "Bot Channel"
+CHANNEL_NAME = "Guessing Game"
 CHANNEL_ENDPOINT = "http://localhost:5002"
 CHANNEL_FILE = 'messages2.json'
 
@@ -85,6 +85,7 @@ def send_message():
     messages = read_messages()
     messages.append({'content':message['content'], 'sender':message['sender'], 'timestamp':message['timestamp']})
     save_messages(messages)
+    respond(message)
     return "OK", 200
 
 def read_messages():
@@ -104,6 +105,11 @@ def save_messages(messages):
     global CHANNEL_FILE
     with open(CHANNEL_FILE, 'w') as f:
         json.dump(messages, f)
+
+def respond(message):
+        content = message['content']
+        print(content, type(content))
+        
 
 # Start development web server
 if __name__ == '__main__':

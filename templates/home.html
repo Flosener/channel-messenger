@@ -8,12 +8,16 @@
 </head>
 
 <body>
-    <h1>GameChat</h1>
-    <ul>
-        {% for channel in channels %}
-            <li><a href="/show?channel={{ channel.endpoint | urlencode }}">{{ channel.name }}</a></li>
-        {% endfor %}
-    </ul>
+    <div class="header">
+        <h1>GameChat</h1>
+    </div>
+    <div class="channels">
+        <ul>
+            {% for channel in channels %}
+                <li><a href="/show?channel={{ channel.endpoint | urlencode }}">{{ channel.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 
 </html>
