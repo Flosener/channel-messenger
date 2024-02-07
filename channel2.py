@@ -1,9 +1,8 @@
-## channel.py - a simple message channel
-##
-
 from flask import Flask, request, render_template, jsonify
 import json
 import requests
+import datetime
+import random
 
 # Class-based application configuration
 class ConfigClass(object):
@@ -17,12 +16,15 @@ app = Flask(__name__)
 app.config.from_object(__name__ + '.ConfigClass')  # configuration
 app.app_context().push()  # create an app context before initializing db
 
-HUB_URL = 'http://localhost:5555'
-HUB_AUTHKEY = '1234567890'
+HUB_URL = 'http://localhost:5555' # 'https://temporary-server.de'
+HUB_AUTHKEY = '1234567890' # SERVER_AUTHKEY = 'Crr-K3d-2N'
 CHANNEL_AUTHKEY = '22334455'
-CHANNEL_NAME = "Guessing Game"
+CHANNEL_NAME = 'Guessing Game'
 CHANNEL_ENDPOINT = "http://localhost:5002"
 CHANNEL_FILE = 'messages2.json'
+
+WELCOME = True
+NUMBER = random.randint(0,100)
 
 @app.cli.command('register')
 def register_command():
@@ -71,8 +73,11 @@ def send_message():
     # check authorization header
     if not check_authorization(request):
         return "Invalid authorization", 400
+
     # check if message is present
     message = request.json
+    response = respond(message)
+
     if not message:
         return "No message", 400
     if not 'content' in message:
@@ -81,21 +86,65 @@ def send_message():
         return "No sender", 400
     if not 'timestamp' in message:
         return "No timestamp", 400
+    
     # add message to messages
     messages = read_messages()
+    if message['sender'] == '':
+        message['sender'] = 'Player'
     messages.append({'content':message['content'], 'sender':message['sender'], 'timestamp':message['timestamp']})
+    messages.append(response)
     save_messages(messages)
-    respond(message)
+
     return "OK", 200
+
+def respond(message):
+        global NUMBER
+        time = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%f")
+
+        # If user does not guess
+        if not 'content' in message:
+            answer = "You did not write anything. Try again."
+            response = {'content':answer, 'sender':'Bot', 'timestamp':time}
+            return response
+        
+        content = message['content']
+        
+        try:
+            content = int(content)
+            if not 0 <= content <= 100:
+                answer = "You're number is not between 0 and 100. Try again."
+            elif content < NUMBER:
+                answer = f"{content} is too low!"
+            elif content > NUMBER:
+                answer = f"{content} is too high!"
+            elif content == NUMBER:
+                answer = f"Congratulations, you guessed my {NUMBER}! New game – guess again!."
+                NUMBER = random.randint(0, 100)
+            else:
+                answer = "Something went wrong. Try again."
+        except ValueError:
+            answer = "You did not type in an integer. Try again."
+
+        response = {'content':answer, 'sender':'Bot', 'timestamp':time}
+        return response
 
 def read_messages():
     global CHANNEL_FILE
+    global WELCOME
     try:
         f = open(CHANNEL_FILE, 'r')
     except FileNotFoundError:
         return []
     try:
         messages = json.load(f)
+        # append welcome message once
+        if WELCOME:
+            time = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%f")
+            answer = "Welcome to the guessing game! Try to guess my number between 0 and 100."
+            response = {'content':answer, 'sender':'Bot', 'timestamp':time}
+            messages.append(response)
+            save_messages(messages)
+            WELCOME = False
     except json.decoder.JSONDecodeError:
         messages = []
     f.close()
@@ -105,11 +154,6 @@ def save_messages(messages):
     global CHANNEL_FILE
     with open(CHANNEL_FILE, 'w') as f:
         json.dump(messages, f)
-
-def respond(message):
-        content = message['content']
-        print(content, type(content))
-        
 
 # Start development web server
 if __name__ == '__main__':
