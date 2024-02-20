@@ -3,7 +3,12 @@ import json
 import requests
 import datetime
 import random
-
+import os
+import nltk
+from nltk.tokenize import word_tokenize
+from collections import Counter
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
 # Class-based application configuration
 class ConfigClass(object):
     """ Flask application config """
@@ -19,13 +24,15 @@ app.app_context().push()  # create an app context before initializing db
 HUB_URL = 'http://localhost:5555' # 'https://temporary-server.de'
 HUB_AUTHKEY = '1234567890' # SERVER_AUTHKEY = 'Crr-K3d-2N'
 CHANNEL_AUTHKEY = '22334455'
-CHANNEL_NAME = 'Guessing Game'
+CHANNEL_NAME = 'ChatBot for CogSci'
 CHANNEL_ENDPOINT = "http://localhost:5002"
 CHANNEL_FILE = 'messages2.json'
 
 WELCOME = True
 NUMBER = random.randint(0,100)
 
+with open('intents.json',encoding='utf-8') as file:
+    intents = json.load(file)
 @app.cli.command('register')
 def register_command():
     global CHANNEL_AUTHKEY, CHANNEL_NAME, CHANNEL_ENDPOINT
@@ -77,7 +84,7 @@ def send_message():
     # check if message is present
     message = request.json
     response = respond(message)
-
+    
     if not message:
         return "No message", 400
     if not 'content' in message:
@@ -90,44 +97,72 @@ def send_message():
     # add message to messages
     messages = read_messages()
     if message['sender'] == '':
-        message['sender'] = 'Player'
+        message['sender'] = 'You'
     messages.append({'content':message['content'], 'sender':message['sender'], 'timestamp':message['timestamp']})
     messages.append(response)
     save_messages(messages)
 
     return "OK", 200
+def get_response(tag):
+    for intent in intents['intents']:
+        if intent['tag'] == tag:
+            return random.choice(intent['responses'])
+def get_intent_tag(message):
+    # Tokenize the message
+    tokens = word_tokenize(message)
+    # Initialize intent tag
+    intent_tags =[]
+    matching_patterns = []
+    for intent in intents['intents']:
+        for pattern in intent['patterns']:
+            if all(word in pattern for word in tokens):
+                matching_patterns.append((intent['tag'], pattern))
 
+    if matching_patterns:
+        # Sort patterns by length to prioritize patterns with all words
+        matching_patterns.sort(key=lambda x: len(x[1]))
+        tag, pattern = matching_patterns[0]  # Get the first (shortest) matching pattern
+        print(f"Found matching pattern: {pattern} for intent tag: {tag}")
+        return tag
+# Function to respond to user messages based on the recognized intent tag
 def respond(message):
-        global NUMBER
-        time = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%f")
+    # Get the intent tag from the message
+    tag = get_intent_tag(message['content'])
+    print(f" this is {tag}")
+    # If intent tag is found, get a response based on the tag
+    if tag:
+        return {'content': get_response(tag), 'sender': 'Bot'}
+    else:
+       most_common_tag = get_most_common_tag(message['content'])
+       if most_common_tag:
+            response = f"I'm not sure what you mean, but I think '{most_common_tag}' is relevant for you. <br>"+get_response(most_common_tag)
+            return {'content': response, 'sender': 'Bot', 'tag': most_common_tag}
+       
+       else:
+            return {'content': "Sorry, nothing was found.", 'sender': 'Bot'}
 
-        # If user does not guess
-        if not 'content' in message:
-            answer = "You did not write anything. Try again."
-            response = {'content':answer, 'sender':'Bot', 'timestamp':time}
-            return response
+
+def get_most_common_tag(message):
+    # Tokenize the message
+    tokens = word_tokenize(message)
+    # Initialize intent tag list
+    intent_tags = []
+    # Check for intent tags in the tagged tokens
+    for word in tokens:
+        # Check if the word is present in any intent pattern
+        for intent in intents['intents']:
+            for pattern in intent['patterns']:
+                if word in pattern:
+                    intent_tags.append(intent['tag']) 
         
-        content = message['content']
-        
-        try:
-            content = int(content)
-            if not 0 <= content <= 100:
-                answer = "You're number is not between 0 and 100. Try again."
-            elif content < NUMBER:
-                answer = f"{content} is too low!"
-            elif content > NUMBER:
-                answer = f"{content} is too high!"
-            elif content == NUMBER:
-                answer = f"Congratulations, you guessed my {NUMBER}! New game – guess again!."
-                NUMBER = random.randint(0, 100)
-            else:
-                answer = "Something went wrong. Try again."
-        except ValueError:
-            answer = "You did not type in an integer. Try again."
-
-        response = {'content':answer, 'sender':'Bot', 'timestamp':time}
-        return response
-
+    # Count the occurrences of each tag
+    tag_counts = Counter(intent_tags)
+    if intent_tags:
+        # Get the most common tag
+        most_common_tag, _ = tag_counts.most_common(1)[0]
+        return most_common_tag
+    else:
+        return None
 def read_messages():
     global CHANNEL_FILE
     global WELCOME
@@ -140,7 +175,7 @@ def read_messages():
         # append welcome message once
         if WELCOME:
             time = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%f")
-            answer = "Welcome to the guessing game! Try to guess my number between 0 and 100."
+            answer = get_response('greeting')
             response = {'content':answer, 'sender':'Bot', 'timestamp':time}
             messages.append(response)
             save_messages(messages)

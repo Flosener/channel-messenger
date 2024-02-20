@@ -8,9 +8,9 @@
 
 <body>
     <div class="header">
-        <a href="{{ url_for('home_page') }}">Home</a>
+        <a class="home_button" href="{{ url_for('home_page') }}">Home</a>
         {% if channel %}
-            <h1>{{ channel.name }}</h1>
+            <h1 class="header-text">{{ channel.name }}</h1>
         {% else %}
             <h1>Channel not found</h1>
         {% endif %}
@@ -20,11 +20,14 @@
         <div class="messages">
             {% if channel %}
                 {% for message in messages %}
-                    <div class="message">
-                        <h2>{{ message.sender }}</h2>
-                        <p>{{ message.content }}</p>
-                        <p style="font-size: 60%">{{ message.timestamp }}</p>
-                    </div>
+                <div class="message {% if message.sender == 'Bot' %}bot-message{% else %}user-message{% endif %}">
+                    {% if message.sender == 'Bot' %}
+                    <img src="../static/unicorn.png" class="icon left">
+                {% endif %}
+                    <h2 class="message-sender">{{ message.sender }}</h2>
+                    <p class="message-text">{{ message.content|safe }}</p>
+                    <p style="font-size: 60%">{{ message.timestamp }}</p>
+                </div>
                 {% endfor %}
             {% else %}
                 <h1>Channel not found</h1>
@@ -47,6 +50,5 @@
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
         });
     </script>
-    
 </body>
 </html>

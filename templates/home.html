@@ -8,15 +8,16 @@
 </head>
 
 <body>
-    <div class="header">
-        <h1>GameChat</h1>
+    <div class="header-home">
+        <h1 class="header-text">ChatBot</h1>
+        <a href="{{ url_for('home_page') }}" class="chat-bot"><img src="../static/chatbot.png"></a>
     </div>
-    <div class="channels">
-        <ul>
+    <div >
+        <div class="channels">
             {% for channel in channels %}
-                <li><a href="/show?channel={{ channel.endpoint | urlencode }}">{{ channel.name }}</a></li>
+                <div class="channel-tabs"><a class="tab-names" href="/show?channel={{ channel.endpoint | urlencode }}">{{ channel.name }}</a></div>
             {% endfor %}
-        </ul>
+        </div>
     </div>
 </body>
 

@@ -1,132 +1,187 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway|Ubuntu&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Anta&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anta&family=Dancing+Script:wght@400..700&display=swap');
 body {
-    margin: 0;
-    padding: 0;
     font-family: Arial, sans-serif;
-    background-image: url('dice.jpg'); /* Replace 'background.jpg' with your background image path */
+    background-image: url('bg.png');
     background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    color: #000000;
+    background-repeat: repeat;
+    margin:0;
+    
 }
 
 .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.5);
-    padding: 10px;
-    z-index: 999; /* Ensure the header appears above other content */
-    color: #2c2626;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-image: linear-gradient(to right, #850033, #9f1940, #b92c4d, #d43d59, #f04f66);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
 }
 
-.channels {
-    position: fixed;
-    top: 120px;
-    left: 10px;
-    z-index: 998;
-    padding: 10px;
-    max-width: 300px; /* Limit the width of the channels section */
-}
-
-.channels a {
-    display: block;
-    padding: 15px;
-    border-radius: 8px;
-    background-color:rgba(255, 255, 255, 0.5);; /* Background color for each channel link */
-    color: #333; /* Text color */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
-}
-
-.channels a:hover {
-    background-color: #ddd; /* Hover background color */
-    color: #222; /* Hover text color */
+.header a {
+    color: #fff;
+    text-decoration: none;
 }
 
 .messages-container {
-    position: fixed;
-    top: 150px; /* Adjust as needed to position the messages below the channel name */
-    left: 0;
-    width: 100%;
-    height: calc(100vh - 280px); /* Adjust to leave space for the header and channel name */
-    overflow-y: auto; /* Enable vertical scrolling for overflow */
-    padding: 10px;
-    z-index: 998; /* Ensure the messages container appears below the header and channel name */
+    padding: 0px;
+    overflow-y: auto;
+    max-height: 400px; /* Adjust height as needed */
 }
 
 .messages {
-    max-width: 600px; /* Adjust as needed */
-    margin: 0 auto; /* Center the messages horizontally */
+    margin-bottom: 20px;
 }
 
 .message {
-    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 1rem;
     padding: 10px;
-    border-radius: 5px;
     margin-bottom: 10px;
+    --r: 25px; /* the radius */
+    --t: 30px; /* the size of the tail */
+    -webkit-mask: 
+    radial-gradient(var(--t) at var(--_d) 0,#0000 98%,#000 102%) 
+      var(--_d) 100%/calc(100% - var(--r)) var(--t) no-repeat,
+    conic-gradient(at var(--r) var(--r),#000 75%,#0000 0) 
+      calc(var(--r)/-2) calc(var(--r)/-2) padding-box, 
+    radial-gradient(50% 50%,#000 98%,#0000 101%) 
+      0 0/var(--r) var(--r) space padding-box;
+    max-width: 300px;
+    padding: calc(2*var(--r)/3);
+    -webkit-filter: drop-shadow(1px 1px 4px rgba(0,0,0,0.75));
+    -moz-filter: drop-shadow(1px 1px 4px rgba(0,0,0,0.75));
+    -ms-filter: drop-shadow(1px 1px 4px rgba(0,0,0,0.75));
+    -o-filter: drop-shadow(1px 1px 4px rgba(0,0,0,0.75));
+   
 }
 
 .input {
+    background-color:transparent;
+    padding: 20px;
     position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 0;
+    left: 0;
+    width: 100%;
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 
-.sender-field {
+.input-field {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-right: 10px;
-    width: 100px; /* Adjust as needed */
-}
-
-.message-field {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-right: 10px;
-    width: 400px;
-    flex: 1; /* Take up remaining space */
 }
 
 .post-button {
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color:#850033;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
-h1 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
+.post-button:hover {
+    background-color:#3c041a;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+@media screen and (max-width: 768px) {
+    .input {
+        flex-direction: column;
+        padding: 10px;
+    }
+    .input-field {
+        margin-bottom: 10px;
+    }
+}
+.bot-message {
+    background-color:#850033;
+    color:whitesmoke; /* Set the text color to red */
+    margin-right: auto; /* Align bot messages to the left */
+    max-width: 70%; /* Limit bot message width */
+    --_d: 0%;
+    border-left: var(--t) solid #0000;
+    margin-right: var(--t);
+    place-self: start;
+    
 }
 
-li {
-    margin-bottom: 10px;
+.user-message {
+    color:#850033;
+    background-color:whitesmoke; 
+    margin-left: auto; /* Align user messages to the right */
+    max-width: 70%; /* Limit user message width */
+    --_d: 100%;
+    border-right: var(--t) solid #0000;
+    place-self: end;
+}
+.icon {
+    width: 40px; /* Adjust size as needed */
+    height: 40px; /* Adjust size as needed */
+    border-radius: 50%; /* Makes the image round */
+    margin-right: 10px; /* Adjust spacing between icon and message */
 }
 
-a {
-    color: #2c2626;
+.bot-message .icon.left {
+    float: left;
+    background-color: whitesmoke;
+}
+.home_button{
+    margin:0.5em;
+    content: url("home.png");
+    border:none;
+    background:transparent;
+}
+.channels  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  justify-content: center;
+}
+.channel-tabs{
+    width:50%;
+    margin:5rem 0.5rem 0.5rem 0.5rem;
+    border-radius: 2rem;
+    background-color: #850033;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+    transition: transform .2s; 
+}
+.channel-tabs:hover{
+    transform: scale(1.1);
+}
+.tab-names{
+    color: whitesmoke;
     text-decoration: none;
-    transition: color 0.3s ease;
+    text-align: center;
+    font-size: 5rem;
+    font-family: "Dancing Script";
+    font-style: normal;
 }
-
-a:hover {
-    color: #4a4444;
+.header-home {
+    display: flex;
+    flex-direction: row;
+    background-image: linear-gradient(to right, #850033, #9f1940, #b92c4d, #d43d59, #f04f66);
+    color: #fff;
+    padding: 0px;
+    text-align: center;
+    margin:0;
+}
+.header-text{
+    font-family: "Anta";
+    margin:0.5rem;
+    font-size: 3rem;
+}
+.message-text{
+    font-family: Raleway;
+}
+.message-sender{
+    font-family: "Dancing Script";
+}
+a{
+color: #fff;
+font-style: oblique;
 }

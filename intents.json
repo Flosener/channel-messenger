@@ -1,0 +1,637 @@
+{
+   "intents":[
+ {
+   "tag": "greeting",
+   "patterns": [
+      "Hi",
+      "How are you?",
+      "Is anyone there?",
+      "Hello",
+      "Good day",
+      "What's up",
+      "how are ya",
+      "heyy",
+      "whatsup",
+      "??? ??? ??"
+   ],
+   "responses": [
+      "Hello!",
+      "Good to see you again!",
+      "Hi there, how can I help?",
+      "Hey there",
+      "Welcome Back,Queen Serena"
+   ],
+   "context_set": ""
+},
+ {
+   "tag": "goodbye",
+   "patterns": [
+      "cya",
+      "see you",
+      "bye bye",
+      "See you later",
+      "Goodbye",
+      "I am Leaving",
+      "Bye",
+      "Have a Good day",
+      "talk to you later",
+      "ttyl",
+      "i got to go",
+      "gtg"
+   ],
+   "responses": [
+      "Sad to see you go :(",
+      "Talk to you later",
+      "Goodbye!",
+      "Come back soon"
+   ],
+   "context_set": ""
+},
+ {
+   "tag": "creator",
+   "patterns": [
+      "what is the name of your developers",
+      "what is the name of your creators",
+      "what is the name of the developers",
+      "what is the name of the creators",
+      "who created you",
+      "your developers",
+      "your creators",
+      "who are your developers",
+      "developers",
+      "you are made by",
+      "you are made by whom",
+      "who created you",
+      "who create you",
+      "creators",
+      "who made you",
+      "who designed you"
+   ],
+   "responses": [
+      "I was made by N.Sabrina, M.Daniel and P.Florian"
+   ],
+   "context_set": ""
+},
+ {
+   "tag": "name",
+   "patterns": [
+      "name",
+      "your name",
+      "do you have a name",
+      "what are you called",
+      "what is your name",
+      "what should I call you",
+      "whats your name?",
+      "what are you",
+      "who are you",
+      "who is this",
+      "what am i chatting to",
+      "who am i taking to",
+      "what are you"
+   ],
+   "responses": [
+      "You can call me CogSci Helper.",
+      "I'm CogSci Helper",
+      "I am a Chatbot.",
+      "I am your helper"
+   ],
+   "context_set": ""
+},
+{
+   "tag": "student_mentoring_team",
+   "patterns": [
+      "timing of student mentoring team",
+      "what is student mentoring timing",
+      "working days of student mentoring",
+      "when are student mentoring guys open",
+      "what are student mentoring hours",
+      "hours of operation",
+      "student mentoring",
+      "mentoring team",
+      "contact mentoring team",
+      "office hours for mentoring team",
+      "mentoring team email"
+      
+   ],
+   "responses": [
+      "The student mentoring team consists of Alina, Elisa, Merri, Zahra, and Fariburz. They are responsible for mentoring COSMOS students. You can reach them via email at cs-mentoring@uos.de. Office hours for everyone are on Thursdays from 09:00 to 12:00. For international students, Zahra and Fariburz are available on Thursdays from 12:00 to 13:00, online only."
+   ],
+   "context_set": ""
+},
+{
+   "tag": "examination_office",
+   "patterns": [
+     "role of the examination office",
+     "contact for examination-related matters",
+     "consultation hours for the examination office",
+     "how to contact the examination office"
+   ],
+   "responses": [
+     "The examination office is responsible for the administration of examinations, including the creation of performance overviews, certificates, and diplomas. For examination-related matters, please contact Carla Högemann, Kelwin Maethner, or Julia Reuter at Wachsbleiche 27, 49090 Osnabrück. You can reach them during consultation hours or via email at pacogsci@uni-osnabrueck.de. Note: When contacting by email, provide a clear subject line."
+   ],
+   "context_set": ""
+ },
+ {
+   "tag": "study_problem",
+   "patterns": [
+     "I have a problem",
+     "Can you help me?",
+     "study program issue",
+     "planning studies problem",
+     "course selection issue",
+     "bachelor's completion issue",
+     "thesis writing problem",
+     "who to ask for help"
+   ],
+   "responses": [
+     "If you have a problem with the study program, planning your studies, brainstorming about courses, finishing your bachelor's, writing your thesis, or need assistance with any academic matter, we recommend contacting the study mentoring team. They are available to help you with these issues."
+   ],
+   "context_set": ""
+ },
+ {
+   "tag": "cogsci_program_application",
+   "patterns": [
+     "I want to apply for the CogSci program",
+     "Can you help me with the CogSci program application?",
+     "How do I apply for the Cognitive Science program?",
+     "Cognitive Science application assistance"
+   ],
+   "responses": [
+     "You can apply for the Cognitive Science program through the Universität Osnabrück website. Universität Osnabrück offers several degrees in Cognitive Science:\n\n- BSc in Cognitive Science: A bachelor's degree program focusing on the interdisciplinary study of the mind and its processes.\n- MSc in Cognitive Science: A master's degree program providing advanced knowledge and research opportunities in cognitive science.\n- Cognitive Computing MSc: A specialized master's degree program focusing on the intersection of cognitive science and computing technologies.\n\nFor more details and application procedures, please visit the Universität Osnabrück website."
+   ],
+   "context_set": ""
+ },
+ {
+   "tag": "program_coordinator_contact",
+   "patterns": [
+     "How can I contact the program coordinator?",
+     "Who is the program coordinator?",
+     "Contact information for program coordinator",
+     "Dean of studies contact details"
+   ],
+   "responses": [
+     "You can contact the program coordinator and dean of studies, Dr. Dr. Gregor Hörzer, for specific questions regarding the programs of the teaching unit Cognitive Science. Dr. Hörzer holds office hours on Mondays from 10-12 a.m. in room 50/E04, which is located right next to the examination office. To schedule an appointment, please register in Stud.IP for the course 'Consultation Hour Dean of Studies Cognitive Science' and book an appointment via the 'Terminvergabe'/ 'Date allocation' tab. When booking an appointment, please briefly state the issue you would like to discuss."
+   ],
+   "context_set": ""
+ },
+ {
+   "tag": "semester_abroad",
+   "patterns": [
+     "semester abroad opportunities",
+     "contact for semester abroad in Osnabrück"
+   ],
+   "responses": [
+     "During your studies, you can participate in a mandatory semester abroad at another institution. For more information about semester abroad opportunities in Osnabrück, please contact us at ikw-eras@uos.de."
+   ],
+   "context_set": ""
+ },
+ {
+   "tag": "administrative_office",
+   "patterns": [
+     "reach the administrative office",
+     "responsible for administrative and research issues"
+   ],
+   "responses": [
+     "For administrative and research issues, please contact Dr. Tobias Thelen at office@ikw.uni-osnabrueck.de."
+   ],
+   "context_set": ""
+ },
+ {
+   "tag": "it_administration",
+   "patterns": [
+     "get IT support as a student or employee",
+     "email address for IT administration"
+   ],
+   "responses": [
+     "For IT support, students and employees can direct their questions to ikwadmin@uni-osnabrueck.de."
+   ],
+   "context_set": ""
+ },
+ {
+   "tag": "course",
+   "patterns": [
+      "list of courses",
+      "list of courses offered",
+      "list of courses offered in",
+      "what are the courses offered in summer semester 24?",
+      "courses?",
+      "courses offered",
+      "courses offered in summer semester 24",
+      "courses you offer",
+      "branches?",
+      "courses available at IKW?",
+      "branches available at IKW?",
+      "what are the courses in IKW?",
+      "what are branches in IKW?",
+      "what are courses in IKW?",
+      "branches available in IKW?",
+      "can you tell me the courses available in IKW?",
+      "can you tell me the branches available in IKW?",
+      "cognitive science?",
+      "cogsci",
+      "Cognitive Science",
+      "it",
+      "IT",
+      "Information Technology",
+      "AI/Ml"
+   ],
+   "responses": [
+        "Here is the course schedule for the summer term 2024:<br><br>1.<ul>Cognitive (Neuro-)Psychology:<li>Introduction to Cognitive (Neuro-)Psychology- Cognitive Science in the Anthropocene</li><li> Episodic Cognition</li><li> Language: Evolution, its use and social interaction</li><li> Trends in Language and Brain Research</li><li> Emotion and Motivation</li></ul><br>2. <ul>Neuroscience<li> Sensory Physiology</li><li> Action and Cognition: Motor System (Lecture)</li><li> Action and Cognition: Visual System (Seminar)</li><li> Decoding Neuronal Activity</li><li> Journal Club 'Spatial Cognition'</li><li> Quest</li><li> Reading Group on Integrative Systems Approaches in Cognitive Computational Neuroscience</li><li> Topics in Cognitive Neuroscience</li><li> Biologisches Experimentalpraktikum</li><li> Emotion and Motivation</li><li> Biopsychologie</li></ul><br>3. <ul>Neuroinformatics<li> Machine Learning</li><li> Neurodynamics</li><li> Decoding Neuronal Activity</li><li> Modelling of Synaptic Plasticity</li><li> Advanced Computer Vision</li><li> Deep Neural Network Analysis</li></ul><br>4. <ul>(Computational) Linguistics<li> Introduction to Computational Linguistics</li><li> Grounding LLMs in the Physical World</li><li> Experimenting with Language</li><li> Trends in Language and Brain Research</li></ul><br>5. <ul>Artificial Intelligence<li> Introduction to AI and Logic Programming</li><li> Formal Models for Analyzing and Creating Music</li><li> Reading Course: Computational Cognitive Science</li><li> Computational Creativity in Natural Language Processing</li><li> Machine Learning</li><li> Advanced Computer Vision</li><li> Grounding LLMs in the Physical World</li><li> Deep Neural Network Analysis</li></ul><br>6. <ul>Philosophy<li> Philosophy for Cognitive Science</li><li> Neuroscience and Philosophy: The Libet Experiments</li><li> Rationalism and Empiricism: Two Paradigms in Cognitive Science and their Philosophical Origins in Descartes and Hume (Part 1)</li><li> Rationalism and Empiricism: Two Paradigms in Cognitive Science and their Philosophical Origins in Descartes and Hume (Part 2)</li><li> Introduction to the Ethics of AI (Lecture + Discussion Group)</li><li> Current Topics in the Ethics of Information Technology</li><li> Neuere Beiträge zur deutschsprachigen Debatte über Willensfreiheit</li><li> Personal Identity, Norms, and Ethics: The Philosophy of Derek Parfit</li><li> Consciousness, Science, and the Universe</li><li> Introduction to the Philosophy of Mind (Intensive Course)</li><li> Philosophy of Emotions (Intensive Course)</li></ul><br>7. <ul>Methods of Cognitive Science<li> Anleitung zum wissenschaftlichen Arbeiten</li><li> Writing like a Language Scientist</li><li> Basic Programming in Python</li><li> Scientific Programming in Python</li><li> Topics in Math for Cognitive Science</li></ul><br>8. <ul>Informatik<li> Advanced Computer Vision</li><li> Machine Learning</li><li> Einführung in die Algorithmik</li></ul><br>9. <ul>Mathematik<li> Mathematics for Cognitive Science</li><li> Analysis II</li><li> Lineare Algebra II</li><li> Mathematik für Anwender II</li></ul><br>10. <ul>Study Project<li> Data Ethics Outreach Lab</li><li> Automatic Music Transcription (Part I)</li><li> The secret lives of adjectives - The Psycholinguistics of Adjective Use (Part III)</li><li> Dyadic eye tracking in virtual reality to investigate visual interaction (Part II)</li><li> Human-A and EEG (Part II)</li><li> Spatial Navigation supported by AI (Part I)</li><li> Emergent Behaviors in a Multi-Agent System with Reinforcement Learning (Part IV)</li><li> The Mentality of Apes by Wolfgang Köhler: One century later (Part IV)</li><li> Computing with Spikes (Part I)</li><li> DreamGuard: A Web Application for restful Nights (Part I)</li></ul><br>11. <ul>Interdisciplinary Courses<li> The secret lives of adjectives: The Psycholinguistics of adjective use (Part II) (Begleitseminar)</li><li> Spatial Navigation supported by AI (Part I) (Begleitseminar)</li><li> Emergent Behaviors in a Multi-Agent System with Reinforcement Learning (Part IV) (Begleitseminar)</li><li> Computing with Spikes (Part I) (Begleitseminar)</li><li> Decoding Neuronal Activity</li><li> Projects at the Intersection of Neuroscience and Machine Learning</li><li> Practical Cognitive Science Communication</li><li> Neuroscience and Philosophy: The Libet Experiments</li><li> Quest</li><li> Enhancing AI through Hybrid Data Sets</li><li> Lab Rotation</li></ul><br>12. <ul>Electives<li> Reading Club Affectivity</li><li> Language and Communication Colloquium</li><li> Colloquium „Computer Vision“</li><li> Scientific Programming in Python</li><li> Basic Programming in Python</li><li> Writing like a Language Scientist</li></ul><br>13. <ul>Integrative Mandatory Element in the Electives Bachelor<li> None</li></ul><br>14. <ul>Integrative Optional Element in the Electives Bachelor<li> Anleitung zum wissenschaftlichen Arbeiten</li></ul><br>15. <ul>PhD students<li> Soft Skills for PhD students</li></ul><br>Please note that this information is based on the course schedule as of Feb 8, 2024 and is subject to change. It's advisable to confirm with the university for the most up-to-date information."
+      ],    
+   "context_set": ""
+},
+ {
+   "tag": "fees",
+   "patterns": [
+      "information about fee",
+      "information on fee",
+      "tell me the fee",
+      "college fee",
+      "fee per semester",
+      "what is the fee of each semester",
+      "what is the fees of each year",
+      "what is fee",
+      "what is the fees",
+      "how much is the fees",
+      "fees for first year",
+      "fees",
+      "about the fees",
+      "tell me something about the fees",
+      "What is the fees of hostel",
+      "how much is the fees",
+      "hostel fees",
+      "fees for AC room",
+      "fees for non-AC room",
+      "fees for Ac room for girls",
+      "fees for non-Ac room for girls",
+      "fees for Ac room for boys",
+      "fees for non-Ac room for boys"
+   ],
+   "responses": [
+      "For Fee detail visit <a target=\"_blank\" href=\"https://www.uni-osnabrueck.de/en/prospective-students/studienbeginn/costs-of-studying/#c289068\"> here</a>"
+   ],
+   "context_set": ""
+},
+ {
+   "tag": "location",
+   "patterns": [
+      "where is the university located",
+      "university is located at",
+      "where is university",
+      "where is university located",
+      "address of university",
+      "how to reach university",
+      "university location",
+      "university address",
+      "wheres the university",
+      "how can I reach university",
+      "whats is the university address",
+      "what is the address of university",
+      "address",
+      "location"
+   ],
+   "responses": [
+      "The university buildings are mainly located in the city center and in the Westerberg district, which is close to the city centre. Most CogSci lectures take place at Westerberg campus<a target=\"_blank\" href=\"https://www.uni-osnabrueck.de/en/university/university-maps/\"> here</a>"
+   ],
+   "context_set": ""
+},
+ {
+   "tag": "hostel",
+   "patterns": [
+      "accommodation facility",
+      "accommodation service",
+      "accommodation location",
+      "accommodation address",
+      "accommodation facilities",
+      "accommodation fees",
+      "Does college provide accommodation",
+      "Is there any accommodation",
+      "Where is accommodation",
+      "do you have accommodation",
+      "do you guys have accommodation",
+      "accommodation",
+      "accommodation capacity",
+      "what is the accommodation fee",
+      "how to get in accommodation",
+      "what is the accommodation address",
+      "how far is accommodation from college",
+      "accommodation college distance",
+      "where is the accommodation",
+      "how big is the accommodation",
+      "distance between college and accommodation",
+      "distance between accommodation and college"
+  ],  
+   "responses": [
+      "The first place to go to find student housing is the Accommodation Office, run by the Studentenwerk. Besides operating the dormitories, they can also help you find private housing. There are about 1700 dormitory rooms available. Types of housing available range from single rooms to shared housing and apartments for families. If you wish to rent a room in the student dormitories, you should send your application for accommodation as early as possible. Please note: Exchange students from partner universities apply for accommodation in the student dormitories through the International Office!.For more information visit <a target=\"_blank\" href=\"https://www.uni-osnabrueck.de/en/prospective-students/international-prospective-students/service/looking-for-a-room/\"> here</a>"
+   ],
+   "context_set": ""
+},
+ {
+   "tag": "document",
+   "patterns": [
+      "document to bring",
+      "documents needed for admision",
+      "documents needed at the time of admission",
+      "documents needed during admission",
+      "documents required for admision",
+      "documents required at the time of admission",
+      "documents required during admission",
+      "What document are required for admission",
+      "Which document to bring for admission",
+      "documents",
+      "what documents do i need",
+      "what documents do I need for admission",
+      "documents needed"
+   ],
+   "responses": [
+      "To know more about document required visit <a target=\"_blank\" href=\"https://www.uni-osnabrueck.de/en/prospective-students/studiengaenge-a-z/cognitive-science-bachelor-of-science/\"> here</a>"
+   ],
+   "context_set": ""
+},
+
+ {
+   "tag": "syllabus",
+   "patterns": [
+      "Syllabus for IT",
+      "what is the Cognitive Science syllabus",
+      "syllabus",
+      "timetable",
+      "what is IT syllabus",
+      "syllabus",
+      "What is next lecture"
+   ],
+   "responses": [
+      "Your individual timetable can be found in StudIP. For additional information and model book<a target=\"_blank\" href=\"https://www.uni-osnabrueck.de/en/prospective-students/studiengaenge-a-z/cognitive-science-bachelor-of-science/\"> here</a>"
+   ],
+   "context_set": ""
+},
+ {
+   "tag": "library",
+   "patterns": [
+      "is there any library",
+      "library facility",
+      "library facilities",
+      "do you have library",
+      "does the college have library facility",
+      "college library",
+      "where can i get books",
+      "book facility",
+      "Where is library",
+      "Library",
+      "Library information",
+      "Library books information",
+      "Tell me about library",
+      "how many libraries"
+   ],
+   "responses": [
+      "Here are the main libraries and their contact information in Osnabrück:\n\n1. Bibliothek Alte Münze (B)\n   - Address: Alte Münze 16 / Kamp, 49074 Osnabrück\n   - Information: Central Information\n   - Email: [Email Address]\n\n2. Bereichsbibliothek Heger-Tor-Wall (J/W)\n   - Address: Heger-Tor-Wall 14, 49078 Osnabrück\n   - Information: Secretary\n   - Email: [Email Address]\n\n3. Bereichsbibliothek Westerberg (N)\n   - Address: Nelson-Mandela-Platz 1, 49076 Osnabrück\n    - Email: [Email Address]. For additional information <a target=\"blank\" href=\"https://www.ub.uni-osnabrueck.de/die_bibliothek/standorte_adressen.html\">here</a>"
+   ],
+   "context_set": ""
+},
+
+ {
+   "tag": "canteen",
+   "patterns": [
+      "food facilities",
+      "canteen facilities",
+      "canteen facility",
+      "is there any canteen",
+      "Is there a cafetaria in college",
+      "Does college have canteen",
+      "Where is canteen",
+      "where is cafetaria",
+      "canteen",
+      "Food",
+      "Cafetaria"
+   ],
+   "responses": [
+      "Our university has canteen with variety of food available"
+   ],
+   "context_set": ""
+},
+ {
+   "tag": "menu",
+   "patterns": [
+      "food menu",
+      "food in canteen",
+      "Whats there on menu",
+      "what is available in college canteen",
+      "what foods can we get in college canteen",
+      "food variety",
+      "What is there to eat?"
+   ],
+   "responses": [
+      "<a target=\"blank\" href=\"https://www.studentenwerk-osnabrueck.de/en/food/menus.html\">Here</a> you can find mensa menu"
+   ],
+   "context_set": ""
+},
+ {
+   "tag": "sem",
+   "patterns": [
+      "exam dates",
+      "exam schedule",
+      "When is semester exam",
+      "Semester exam timetable",
+      "sem",
+      "semester",
+      "exam",
+      "when is exam",
+      "exam timetable",
+      "exam dates",
+      "when is semester"
+   ],
+   "responses": [
+      "Exam registration and datas about exams can be found in HISione"
+   ],
+   "context_set": ""
+},
+ {
+   "tag": "admission",
+   "patterns": [
+      "what is the process of admission",
+      "what is the admission process",
+      "How to take admission in your college",
+      "What is the process for admission",
+      "admission",
+      "admission process"
+   ],
+   "responses": [
+      "For application information you can visit University's  <a target=\"_blank\" href=\"https://www.uni-osnabrueck.de/en/prospective-students/international-prospective-students/application/\">website</a>"
+   ],
+   "context_set": ""
+},
+ {
+   "tag": "facilities",
+   "patterns": [
+      "What facilities college provide",
+      "College facility",
+      "What are college facilities",
+      "facilities",
+      "facilities provided"
+   ],
+   "responses": [
+      "Our university provides fully AC Lab with internet connection, smart classroom, Auditorium, library,canteen"
+   ],
+   "context_set": ""
+},
+ {
+   "tag": "random",
+   "patterns": [
+      "I love you",
+      "Will you marry me",
+      "Do you love me",
+      "What's your phone number?",
+      "Are you single?",
+      "What do you think about love?",
+      "Tell me about your romantic experiences",
+      "Can you be my friend?",
+      "Do you have a crush on anyone?",
+      "Let's go on a date",
+      "What's your relationship status?",
+      "Do you believe in soulmates?",
+      "Will you go out with me?",
+      "Do you want to be my Valentine?",
+      "What's your type?",
+      "Will you be my boyfriend/girlfriend?",
+      "Can we have a relationship?",
+      "Do you dream of getting married?",
+      "Can we have a romantic conversation?",
+      "What's your idea of a perfect date?",
+      "Can I have your picture?",
+      "Can I flirt with you?",
+      "How do you feel about me?",
+      "Can I kiss you?",
+      "Can we be more than friends?",
+      "Do you find me attractive?"
+   ],
+   "responses": [
+      "I am not program for this, please ask appropriate query",
+      "I am not programmed for this, please ask an appropriate query",
+      "Sorry, I cannot provide responses to personal questions like that",
+      "I'm here to assist with specific topics, not personal matters",
+      "Let's keep the conversation focused on relevant topics, shall we?",
+      "I'm afraid I can't engage in romantic or personal discussions",
+      "My focus is on providing information and assistance, not personal matters",
+      "Let's respect each other's boundaries and keep the conversation professional",
+      "I'm designed to handle inquiries related to specific topics, not personal relationships",
+      "Please refrain from asking personal questions, as I'm unable to respond to them",
+      "I appreciate your interest, but I'm not equipped to discuss personal matters"
+   ],
+   "context_set": ""
+},
+ {
+   "tag": "swear",
+   "patterns": [
+      "fuck",
+      "bitch",
+      "shut up",
+      "hell",
+      "stupid",
+      "idiot",
+      "dumb ass",
+      "asshole",
+      "fucker"
+   ],
+   "responses": [
+      "please use appropriate language",
+      "Maintaining decency would be appreciated"
+   ],
+   "context_set": ""
+},
+ {
+   "tag": "vacation",
+   "patterns": [
+      "holidays",
+      "when will semester starts",
+      "when will semester end",
+      "when is the holidays",
+      "list of holidays",
+      "Holiday in these year",
+      "holiday list",
+      "about vacations",
+      "about holidays",
+      "When is vacation",
+      "When is holidays",
+      "how long will be the vacation"
+   ],
+   "responses": [
+      "Academic calender is given to you by your class-soordinators after you join your respective classes"
+   ],
+   "context_set": ""
+},
+ {
+   "tag": "sports",
+   "patterns": [
+      "sports and games",
+      "give sports details",
+      "sports infrastructure",
+      "sports facilities",
+      "information about sports",
+      "Sports activities",
+      "please provide sports and games information"
+   ],
+   "responses": [
+      "Our university encourages all-round development of students and hence provides sports facilities in the campus. For more details visit<a target=\"_blank\" href=/\"https://zfh.uni-osnabrueck.de/startseite.html\">here</a>"
+   ],
+   "context_set": ""
+},
+ {
+   "tag": "salutaion",
+   "patterns": [
+      "okk",
+      "okie",
+      "nice work",
+      "well done",
+      "good job",
+      "thanks for the help",
+      "Thank You",
+      "its ok",
+      "Thanks",
+      "Good work",
+      "k",
+      "ok",
+      "okay"
+   ],
+   "responses": [
+      "I am glad I helped you",
+      "welcome, anything else i can assist you with?"
+   ],
+   "context_set": ""
+},
+ {
+   "tag": "task",
+   "patterns": [
+      "what can you do",
+      "what are the thing you can do",
+      "things you can do",
+      "what can u do for me",
+      "how u can help me",
+      "why i should use you"
+   ],
+   "responses": [
+      "I can answer to low-intermediate questions regarding Cognitive Science",
+      "You can ask me questions regarding Cognitive Science in Osnabrück University, and i will try to answer them"
+   ],
+   "context_set": ""
+},
+ {
+   "tag": "ragging",
+   "patterns": [
+      "ragging",
+      "is ragging practice active in college",
+      "does college have any antiragging facility",
+      "is there any ragging cases",
+      "is ragging done here",
+      "ragging against",
+      "antiragging facility",
+      "ragging juniors",
+      "ragging history",
+      "ragging incidents"
+   ],
+   "responses": [
+      "We are Proud to tell you that our college provides ragging free environment, and we have strict rules against ragging"
+   ],
+   "context_set": ""
+}
+]
+}
