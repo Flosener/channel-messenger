@@ -7,6 +7,7 @@ body {
     background-size: cover;
     background-repeat: repeat;
     margin:0;
+    max-height: 100vh;
     
 }
 
@@ -28,7 +29,7 @@ body {
 .messages-container {
     padding: 0px;
     overflow-y: auto;
-    max-height: 400px; /* Adjust height as needed */
+    max-height:calc(80vh - 70px); /* Adjust height as needed */
 }
 
 .messages {
